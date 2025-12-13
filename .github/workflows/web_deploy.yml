@@ -28,7 +28,7 @@ jobs:
       - name: Enable Web Support & Repair
         run: |
           flutter config --enable-web
-          flutter create . --platforms web
+          flutter create . --platforms web --project-name zamzam_erp_solution
           # flutter create may change the pubspec, so we might need to be careful, 
           # but usually it just adds the web dir.
 
