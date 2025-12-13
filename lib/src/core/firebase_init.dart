@@ -4,13 +4,19 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import '../../firebase_options.dart';
 
 Future<void> initFirebase() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // NOTE: This assumes native config files are added for Android & iOS.
-  // If using web, configure Firebase options for web separately.
   try {
-    await Firebase.initializeApp();
+    if (kIsWeb) {
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.web,
+      );
+    } else {
+      await Firebase.initializeApp();
+    }
     debugPrint('Firebase initialized successfully');
   } catch (e) {
     debugPrint('Firebase initialization failed: $e');
