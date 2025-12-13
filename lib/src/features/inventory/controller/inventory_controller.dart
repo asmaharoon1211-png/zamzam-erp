@@ -1,5 +1,5 @@
 // lib/src/features/inventory/controller/inventory_controller.dart
-import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/inventory_repository.dart';
@@ -12,7 +12,7 @@ class InventoryController extends StateNotifier<bool> {
       : _repository = repository,
         super(false);
 
-  Future<String?> uploadImage(File file) async {
+  Future<String?> uploadImage(XFile file) async {
     try {
       final fileName = 'products/${DateTime.now().millisecondsSinceEpoch}.jpg';
       return await _repository.uploadImage(file, fileName);
@@ -22,7 +22,7 @@ class InventoryController extends StateNotifier<bool> {
     }
   }
 
-  Future<bool> addProduct(Product product, File? imageFile, BuildContext context) async {
+  Future<bool> addProduct(Product product, XFile? imageFile, BuildContext context) async {
     state = true;
     try {
       String? imageUrl;

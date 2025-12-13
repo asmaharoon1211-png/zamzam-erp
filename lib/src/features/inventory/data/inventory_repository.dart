@@ -1,5 +1,5 @@
 // lib/src/features/inventory/data/inventory_repository.dart
-import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -32,9 +32,10 @@ class InventoryRepository {
   }
 
   // Upload Image
-  Future<String> uploadImage(File file, String path) async {
+  Future<String> uploadImage(XFile file, String path) async {
     final ref = _storage.ref().child(path);
-    final uploadTask = ref.putFile(file);
+    final data = await file.readAsBytes();
+    final uploadTask = ref.putData(data, SettableMetadata(contentType: 'image/jpeg')); 
     final snapshot = await uploadTask;
     return await snapshot.ref.getDownloadURL();
   }

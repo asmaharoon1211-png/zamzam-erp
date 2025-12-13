@@ -1,5 +1,5 @@
 // lib/src/features/inventory/presentation/add_product_screen.dart
-import 'dart:io';
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
@@ -26,7 +26,8 @@ class _AddProductScreenState extends ConsumerState<AddProductScreen> {
   final _unitCtrl = TextEditingController(); // e.g. Piece, kg
   final _descCtrl = TextEditingController();
 
-  File? _imageFile;
+  XFile? _imageFile;
+  Uint8List? _imageBytes;
   final ImagePicker _picker = ImagePicker();
 
   @override
@@ -46,8 +47,10 @@ class _AddProductScreenState extends ConsumerState<AddProductScreen> {
   Future<void> _pickImage() async {
     final XFile? pickedFile = await _picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
+      final bytes = await pickedFile.readAsBytes();
       setState(() {
-        _imageFile = File(pickedFile.path);
+        _imageFile = pickedFile;
+        _imageBytes = bytes;
       });
     }
   }
@@ -98,8 +101,8 @@ class _AddProductScreenState extends ConsumerState<AddProductScreen> {
                         child: CircleAvatar(
                           radius: 50,
                           backgroundColor: Colors.grey[200],
-                          backgroundImage: _imageFile != null ? FileImage(_imageFile!) : null,
-                          child: _imageFile == null
+                          backgroundImage: _imageBytes != null ? MemoryImage(_imageBytes!) : null,
+                          child: _imageBytes == null
                               ? const Icon(Icons.add_a_photo, size: 40, color: Colors.grey)
                               : null,
                         ),
