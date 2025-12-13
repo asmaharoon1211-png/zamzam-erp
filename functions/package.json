@@ -1,0 +1,18 @@
+{
+  "name": "zamzam-functions",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint .",
+    "deploy": "firebase deploy --only functions"
+  },
+  "dependencies": {
+    "firebase-admin": "^11.9.0",
+    "firebase-functions": "^4.3.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "eslint": "^8.36.0"
+  }
+}

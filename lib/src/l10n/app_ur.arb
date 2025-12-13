@@ -1,0 +1,18 @@
+{
+  "appTitle": "زمزم ای آر پی",
+  "dashboard": "ڈیش بورڈ",
+  "inventory": "انوینٹری",
+  "sales": "فروخت / پی او ایس",
+  "purchases": "خریداری",
+  "couriers": "کورئیر",
+  "login": "لاگ ان",
+  "email": "ای میل",
+  "password": "پاس ورڈ",
+  "welcome": "خوش آمدید",
+  "logout": "لاگ آؤٹ",
+  "totalProducts": "کل مصنوعات",
+  "lowStock": "کم اسٹاک",
+  "inventoryValue": "انوینٹری ویلیو",
+  "todaysOrders": "آج کے آرڈر",
+  "todaysSales": "آج کی فروخت"
+}

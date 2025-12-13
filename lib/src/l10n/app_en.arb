@@ -1,0 +1,18 @@
+{
+  "appTitle": "ZAMZAM ERP",
+  "dashboard": "Dashboard",
+  "inventory": "Inventory",
+  "sales": "Sales / POS",
+  "purchases": "Purchases",
+  "couriers": "Couriers",
+  "login": "Login",
+  "email": "Email",
+  "password": "Password",
+  "welcome": "Welcome",
+  "logout": "Logout",
+  "totalProducts": "Total Products",
+  "lowStock": "Low Stock",
+  "inventoryValue": "Inv. Value",
+  "todaysOrders": "Today's Orders",
+  "todaysSales": "Today's Sales"
+}

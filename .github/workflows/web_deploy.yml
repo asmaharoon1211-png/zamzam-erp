@@ -1,0 +1,51 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          flutter-version: '3.16.x' # Matching your pubspec/build.yml
+
+      - name: Enable Web Support & Repair
+        run: |
+          flutter config --enable-web
+          flutter create . --platforms web
+          # flutter create may change the pubspec, so we might need to be careful, 
+          # but usually it just adds the web dir.
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Generate Localizations
+        run: flutter gen-l10n
+
+      - name: Build Web
+        run: |
+          # Get repo name for base-href (required for GitHub Pages project sites)
+          REPO_NAME=$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')
+          flutter build web --release --base-href "/$REPO_NAME/" --no-tree-shake-icons
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
