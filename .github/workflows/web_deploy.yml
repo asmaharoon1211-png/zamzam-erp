@@ -42,7 +42,7 @@ jobs:
         run: |
           # Get repo name for base-href (required for GitHub Pages project sites)
           REPO_NAME=$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')
-          flutter build web --release --base-href "/$REPO_NAME/" --no-tree-shake-icons
+          flutter build web --release --base-href "/$REPO_NAME/" --no-tree-shake-icons --verbose
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
