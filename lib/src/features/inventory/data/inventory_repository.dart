@@ -53,7 +53,7 @@ class InventoryRepository {
     if (doc.exists) {
       return Product.fromDoc(doc);
     }
-    null;
+    return null;
   }
 }
 

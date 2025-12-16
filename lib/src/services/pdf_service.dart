@@ -26,7 +26,7 @@ class PdfService {
               pw.Text('Date: ${order.date.toString().substring(0, 16)}'),
               if (order.courierName != null) pw.Text('Courier: ${order.courierName}'),
               pw.SizedBox(height: 10),
-              pw.Table.fromTextArray(
+              pw.TableHelper.fromTextArray(
                 context: context,
                 data: <List<String>>[
                   <String>['Item', 'Qty', 'Total'],
