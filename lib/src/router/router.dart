@@ -1,5 +1,5 @@
 // lib/src/router/router.dart
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' show BuildContext, Widget;
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../features/auth/data/auth_repository.dart';
@@ -8,10 +8,10 @@ import '../features/inventory/presentation/inventory_screen.dart';
 import '../features/inventory/presentation/add_product_screen.dart';
 import '../features/sales/presentation/sales_list_screen.dart';
 import '../features/sales/presentation/pos_screen.dart';
-import '../features/sales/presentation/pos_screen.dart';
 import '../features/purchase/presentation/purchase_list_screen.dart';
 import '../features/purchase/presentation/add_purchase_screen.dart';
-import '../features/couriers/presentation/courier_list_screen.dart';import '../features/auth/presentation/login_screen.dart';
+import '../features/couriers/presentation/courier_list_screen.dart';
+import '../features/auth/presentation/login_screen.dart';
 import '../features/auth/presentation/signup_screen.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {

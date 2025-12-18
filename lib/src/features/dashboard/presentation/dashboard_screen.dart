@@ -92,7 +92,7 @@ class DashboardScreen extends ConsumerWidget {
       ),
       body: RefreshIndicator(
         onRefresh: () async {
-          ref.refresh(dashboardStatsProvider); 
+          ref.refresh(dashboardStatsProvider);
         },
         child: roleAsync.when(
           data: (role) {

@@ -15,10 +15,10 @@ class DashboardStatsWidget extends ConsumerWidget {
         return SingleChildScrollView(
           child: Column(
             children: [
-              _buildStatCard('Total Products', '${stats.totalProducts}', Colors.blue),
-              _buildStatCard('Low Stock', '${stats.lowStockProducts}', Colors.red),
+              _buildStatCard('Total Products', stats.totalProducts.toString(), Colors.blue),
+              _buildStatCard('Low Stock', stats.lowStockProducts.toString(), Colors.red),
               _buildStatCard('Inv. Value', '${stats.totalInventoryValue.toStringAsFixed(2)}', Colors.orange),
-              _buildStatCard("Today's Orders", '${stats.todayOrders}', Colors.green),
+              _buildStatCard("Today's Orders", stats.todayOrders.toString(), Colors.green),
               _buildStatCard("Today's Sales", '${stats.todaySales.toStringAsFixed(2)}', Colors.purple),
             ],
           ),

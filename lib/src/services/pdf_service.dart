@@ -4,9 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
-import '../features/inventory/data/inventory_repository.dart';
 import '../models/order_model.dart';
-import '../core/constants.dart';
 
 class PdfService {
   Future<Uint8List> generateInvoice(OrderModel order) async {
